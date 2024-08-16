@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Users/matheohersan/.config/aerospace'
+let g:netrw_dirhist_9='/Users/matheohersan/.config/fish'
+let g:netrw_dirhist_8='/Users/matheohersan/.config/aerospace'
+let g:netrw_dirhist_7='/Users/matheohersan/.config/wezterm'
+let g:netrw_dirhist_6='/Users/matheohersan/.config/aerospace'
+let g:netrw_dirhist_5='/Users/matheohersan'
+let g:netrw_dirhist_4='/Users/matheohersan/.config/aerospace'
+let g:netrw_dirhist_3='/Users/matheohersan/.config/wezterm'
+let g:netrw_dirhist_2='/Users/matheohersan/.config/sketchybar'
+let g:netrw_dirhist_1='/Users/matheohersan/1A/IUT/Cours/Algo/TP5'
