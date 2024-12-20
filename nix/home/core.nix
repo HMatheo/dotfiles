@@ -22,8 +22,6 @@
     zstd
     gnupg
 
-    # productivity
-    glow # markdown previewer in terminal
   ];
 
   programs = {
