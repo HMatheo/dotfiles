@@ -27,6 +27,14 @@
       dock = {
         autohide = true;
         show-recents = false;  # disable recent apps
+        persistent-apps = [
+          "/Applications/Safari.app"
+          "/System/Applications/System Settings.app"
+          "/System/Applications/Mail.app"
+          "/System/Applications/Calendar.app"
+          "/System/Applications/Messages.app"
+          "/System/Applications/Spotify.app"
+        ];
       };
 
       # customize finder
@@ -71,6 +79,8 @@
         NSNavPanelExpandedStateForSaveMode = true;  # expand save panel by default(保存文件时的路径选择/文件名输入页)
         NSNavPanelExpandedStateForSaveMode2 = true;
       };
+      
+      
 
       # Customize settings that not supported by nix-darwin directly
       # see the source code of this project to get more undocumented options:
