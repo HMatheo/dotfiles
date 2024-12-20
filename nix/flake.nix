@@ -1,104 +1,65 @@
 {
-  description = "Hersan nix-darwin system flake";
+  description = "Nix for macOS configuration";
 
+  ##################################################################################################################
+  #
+  # Want to know Nix in details? Looking for a beginner-friendly tutorial?
+  # Check out https://github.com/ryan4yin/nixos-and-flakes-book !
+  #
+  ##################################################################################################################
+
+  # the nixConfig here only affects the flake itself, not the system configuration!
+  nixConfig = {
+    substituters = [
+      # Query the mirror of USTC first, and then the official cache.
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://cache.nixos.org"
+    ];
+  };
+
+  # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
+  # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
-  let
-    configuration = { pkgs, config,  ... }: {
+  # The `outputs` function will return all the build results of the flake.
+  # A flake can have many use cases and different types of outputs,
+  # parameters in `outputs` are defined in `inputs` and can be referenced by their names.
+  # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
+  # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    darwin,
+    ...
+  }: let
+    username = "matheohersan";
+    system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
+    hostname = "MacBook-Pro-de-Matheo";
 
-	nixpkgs.config.allowUnfree = true;
-
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ pkgs.neovim
-	  pkgs.tmux
-	  pkgs.alacritty
-          pkgs.mkalias
-          pkgs.spotify
-          pkgs.raycast
-        ];
-
-      homebrew = {
-         enable = true;
-	 brews = [
-	   "mas" 
-         ];
-         casks = [
-            "firefox"
-         ];
-         onActivation.cleanup = "zap";
+    specialArgs =
+      inputs
+      // {
+        inherit username hostname;
       };
+  in {
+    darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
+      inherit system specialArgs;
+      modules = [
+        ./modules/nix-core.nix
+        ./modules/system.nix
+        ./modules/apps.nix
 
-      fonts.packages = [
-	  (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-      ];
-
-system.activationScripts.applications.text = let
-  env = pkgs.buildEnv {
-    name = "system-applications";
-    paths = config.environment.systemPackages;
-    pathsToLink = "/Applications";
-  };
-in
-  pkgs.lib.mkForce ''
-  # Set up applications.
-  echo "setting up /Applications..." >&2
-  rm -rf /Applications/Nix\ Apps
-  mkdir -p /Applications/Nix\ Apps
-  find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-  while read -r src; do
-    app_name=$(basename "$src")
-    echo "copying $src" >&2
-    ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-  done
-      '';
-
-      # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
-      # nix.package = pkgs.nix;
-
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
-
-      # Enable alternative shell support in nix-darwin.
-      # programs.fish.enable = true;
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 5;
-
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
-    };
-  in
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#MacBook-Pro-de-Matheo
-    darwinConfigurations."MacBook-Pro-de-Matheo" = nix-darwin.lib.darwinSystem {
-      modules = [ 
-         configuration 
-         nix-homebrew.darwinModules.nix-homebrew
-	 {
-	    nix-homebrew = {
-               enable = true;
-               enableRosetta = true;
-               user = "matheohersan";
-	    };
-         }
+        ./modules/host-users.nix
       ];
     };
-
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."MacBook-Pro-de-Matheo".pkgs;
+    # nix code formatter
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
 }
