@@ -18,6 +18,7 @@
     neovim
     git
     just # use Justfile to simplify nix-darwin's commands 
+    starship
   ];
   environment.variables.EDITOR = "nvim";
 
