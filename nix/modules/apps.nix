@@ -18,6 +18,7 @@
     neovim
     git
     just # use Justfile to simplify nix-darwin's commands 
+    nushell # a modern shell written in Rust
   ];
   environment.variables.EDITOR = "nvim";
 
