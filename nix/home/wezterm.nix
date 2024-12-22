@@ -1,6 +1,6 @@
-{inputs, pkgs, ...}:{
-    programs.wezterm = {
-        enable = true;
-        package = inputs.wezterm.packages.${pkgs.system}.default;
-    };
-}
+{ pkgs, ... }: {
+  programs.wezterm = {
+    enable = true;
+    package = pkgs.wezterm;
+  };
+};
