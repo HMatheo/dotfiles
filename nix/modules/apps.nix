@@ -66,10 +66,9 @@
       "spotify"
 
       "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
+      
+      "hammerspoon" # automate macOS using Lua
 
-      # Development
-#     "insomnia" # REST client
-#     "wireshark" # network analyzer
     ];
   };
 }

@@ -33,7 +33,7 @@
           "/System/Applications/Mail.app"
           "/System/Applications/Calendar.app"
           "/System/Applications/Messages.app"
-          "/System/Applications/Spotify.app"
+          #"${pkgs.spotify}/Applications/Spotify.app"
         ];
       };
 
