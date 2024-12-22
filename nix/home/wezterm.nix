@@ -1,7 +1,7 @@
-{ pkgs, ... }:
-
-homeManagerConfiguration = {
-  programs.wezterm = {
-    enable = true; # Installe WezTerm
+{ pkgs, ... }: {
+    programs.wezterm = {
+    enable = true;
+    package = pkgs.wezterm;
   };
-};
+
+}
