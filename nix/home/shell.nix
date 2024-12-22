@@ -11,5 +11,12 @@
 
     urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
     urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+    ls = "ls --color=auto";
+    ll = "ls -lh --color=auto";
+    la = "ls -lha --color=auto";
+    lla = "ls -lha --color=auto";
+    grep = "grep --color=auto";
+
+    
   };
 }
