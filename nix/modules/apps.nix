@@ -19,6 +19,7 @@
     git
     just # use Justfile to simplify nix-darwin's commands 
     nushell # a modern shell written in Rust
+    carapace # auto completion for nushell
   ];
   environment.variables.EDITOR = "nvim";
 
