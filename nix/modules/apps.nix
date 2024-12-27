@@ -20,6 +20,9 @@
     just # use Justfile to simplify nix-darwin's commands 
     nushell # a modern shell written in Rust
     carapace # auto completion for nushell
+    zoxide # a faster way to navigate your filesystem
+    sqlite # a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine
+    mariadb # a community-developed fork of MySQL
   ];
   environment.variables.EDITOR = "nvim";
 
