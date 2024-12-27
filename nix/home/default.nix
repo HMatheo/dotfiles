@@ -8,6 +8,7 @@
     ./shell.nix
     ./starship.nix
     ./wezterm.nix
+    ./pgp.nix
   ];
 
   # Home Manager needs a bit of information about you and the

@@ -23,6 +23,7 @@
     zoxide # a faster way to navigate your filesystem
     sqlite # a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine
     mariadb # a community-developed fork of MySQL
+    jc # a CLI tool and python library that converts the output of popular command-line tools and file-types to JSON or Dictionaries
   ];
   environment.variables.EDITOR = "nvim";
 
