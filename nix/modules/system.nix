@@ -33,9 +33,6 @@
           "/System/Applications/Mail.app"
           "/System/Applications/Calendar.app"
           "/System/Applications/Messages.app"
-          #"${pkgs.spotify}/Applications/Spotify.app"
-          # wezterm (dans home-manager)
-           "${pkgs.wezterm}/Applications/WezTerm.app"
         ];
       };
 

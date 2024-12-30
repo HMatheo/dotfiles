@@ -7,8 +7,8 @@
     ./git.nix
     ./shell.nix
     ./starship.nix
-    ./wezterm.nix
     ./pgp.nix
+    ./dotnet-sdk.nix
   ];
 
   # Home Manager needs a bit of information about you and the

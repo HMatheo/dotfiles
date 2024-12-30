@@ -24,6 +24,7 @@
     mariadb # a community-developed fork of MySQL
     jc # a CLI tool and python library that converts the output of popular command-line tools and file-types to JSON or Dictionaries
     php
+    dotnet-sdk
   ];
   environment.variables.EDITOR = "nvim";
  
