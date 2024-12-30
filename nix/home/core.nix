@@ -9,6 +9,7 @@
     jq # A lightweight and flexible command-line JSON processor
     yq-go # yaml processer https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
+    fd # A simple, fast and user-friendly alternative to 'find'
 
     nmap # A utility for network discovery and security auditing
 
