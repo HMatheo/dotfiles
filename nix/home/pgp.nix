@@ -1,10 +1,6 @@
 { pkgs, ... }: {
-    programs.pgp = {
+    programs.gpg = {
         enable = true;
-        gpgAgent = {
-            enable = true;
-            enableSSHSupport = true;
-        };
     };
 }
     

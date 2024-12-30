@@ -4,7 +4,6 @@
   # 
   #  Install all apps and packages here.
   #
-  # TODO Fell free to modify this file to fit your needs.
   #
   ##########################################################################
 
@@ -24,11 +23,10 @@
     sqlite # a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine
     mariadb # a community-developed fork of MySQL
     jc # a CLI tool and python library that converts the output of popular command-line tools and file-types to JSON or Dictionaries
+    php
   ];
   environment.variables.EDITOR = "nvim";
-
-  # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
-  # 
+ 
   # The apps installed by homebrew are not managed by nix, and not reproducible!
   # But on macOS, homebrew has a much larger selection of apps than nixpkgs, especially for GUI apps!
   homebrew = {
@@ -55,13 +53,11 @@
     ];
 
     # `brew install`
-    # TODO Feel free to add your favorite apps here.
     brews = [
       "wget" # download tool
     ];
 
     # `brew install --cask`
-    # TODO Feel free to add your favorite apps here.
     casks = [
       "firefox"
       "visual-studio-code"
@@ -74,6 +70,8 @@
       "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
       
       "hammerspoon" # automate macOS using Lua
+      
+      "ghostty"
 
     ];
   };
