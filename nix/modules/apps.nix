@@ -25,6 +25,11 @@
     jc # a CLI tool and python library that converts the output of popular command-line tools and file-types to JSON or Dictionaries
     php
     jetbrains.rider
+    jetbrains.datagrip
+    jetbrains.idea-ultimate
+    gum # a command line tool
+    nodejs
+    obsidian
   ];
   environment.variables.EDITOR = "nvim";
  
@@ -46,7 +51,7 @@
     # For details, see https://github.com/mas-cli/mas 
     masApps = {
       Xcode = 497799835;
-
+      MKPlayer = 1335612105;
     };
 
     taps = [
@@ -56,11 +61,13 @@
     # `brew install`
     brews = [
       "wget" # download tool
+      "watchman"
     ];
 
     # `brew install --cask`
     casks = [
       "firefox"
+      "google-chrome"
       "visual-studio-code"
 
       # IM & audio & remote desktop & meeting

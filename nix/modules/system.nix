@@ -28,8 +28,8 @@
         autohide = true;
         show-recents = false;  # disable recent apps
         persistent-apps = [
-          "/Applications/Safari.app"
           "/System/Applications/System Settings.app"
+          "/Applications/Vivaldi.app"
           "/System/Applications/Mail.app"
           "/System/Applications/Calendar.app"
           "/System/Applications/Messages.app"
