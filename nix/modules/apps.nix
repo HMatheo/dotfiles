@@ -24,12 +24,7 @@
     mariadb # a community-developed fork of MySQL
     jc # a CLI tool and python library that converts the output of popular command-line tools and file-types to JSON or Dictionaries
     php
-    jetbrains.rider
-    jetbrains.datagrip
-    jetbrains.idea-ultimate
-    gum # a command line tool
     nodejs
-    obsidian
   ];
   environment.variables.EDITOR = "nvim";
  
@@ -62,6 +57,8 @@
     brews = [
       "wget" # download tool
       "watchman"
+      "iproute2mac"
+      "yarn"
     ];
 
     # `brew install --cask`
@@ -77,7 +74,9 @@
 
       "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
       
-      "hammerspoon" # automate macOS using Lua
+      "karabiner-elements"
+
+      "rectangle"
       
       "ghostty"
 

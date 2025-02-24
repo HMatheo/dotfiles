@@ -29,7 +29,7 @@
         show-recents = false;  # disable recent apps
         persistent-apps = [
           "/System/Applications/System Settings.app"
-          "/Applications/Vivaldi.app"
+          "/Applications/Zen Browser.app"
           "/System/Applications/Mail.app"
           "/System/Applications/Calendar.app"
           "/System/Applications/Messages.app"
