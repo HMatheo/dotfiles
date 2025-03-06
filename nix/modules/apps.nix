@@ -59,6 +59,7 @@
       "watchman"
       "iproute2mac"
       "yarn"
+      "lazygit"
     ];
 
     # `brew install --cask`

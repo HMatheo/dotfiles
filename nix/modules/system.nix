@@ -152,7 +152,7 @@
   };
 
   # Add ability to used TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   # this is required if you want to use darwin's default shell - zsh
@@ -166,22 +166,16 @@
   # Fonts
   fonts = {
     packages = with pkgs; [
-      # icon fonts
+      # Icon fonts
       material-design-icons
       font-awesome
 
-      # nerdfonts
-      # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
-      (nerdfonts.override {
-        fonts = [
-          # symbols icon only
-          "NerdFontsSymbolsOnly"
-          # Characters
-          "FiraCode"
-          "JetBrainsMono"
-          "Iosevka"
-        ];
-      })
-    ];
-  };
+      # Nerd Fonts (nouveau format)
+      pkgs.nerd-fonts.symbols-only
+      pkgs.nerd-fonts.fira-code
+      pkgs.nerd-fonts.jetbrains-mono
+      pkgs.nerd-fonts.iosevka
+  ];
+};
+
 }
